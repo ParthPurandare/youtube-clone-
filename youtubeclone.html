@@ -1,0 +1,2353 @@
+<!--
+
+Hello,Welcome
+i tried to Make a Clone of Youtube...WatchOut My Result
+
+--------------------------------------------
+
+i don't have much knowledge about coding but as much i know from that i tried to make it
+
+--------------------------------------------
+
+Maybe Not Comfortably work in Web-browsers
+
+--------------------------------------------
+
+             ..Attention..
+            
+ This code can takes upto 15Mb of Data
+ Btw,i Highly Compressed all the videos
+Don't Worry 
+ It will take your very less data even less then youtube
+
+
+--------------------------------------------
+
+Thanks For Reading Hope you will Like my Code...
+
+
+-parth (walker)
+
+--------------------------------------------
+ 
+Features :
+1.Youtube 
+2.Shorts
+3.Studio
+
+Shorts #2 is My Favourite😍...
+--------------------------------------------
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Youtube Clone</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       
+    </head>
+    <body>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+button{
+    outline:none;
+}
+.main-container{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background-color:#282828;
+}
+.yt-header{
+    width:100%;
+    height:8%;
+    background:#282828;
+    border-bottom:solid 1px grey;
+}
+.loaderimage{
+    width:100%;
+    height:30%;
+}
+.yt-logo-header{
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+}
+.icons{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    float: right;
+    font-size:25px;
+}
+.icons1{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    float: left;
+    font-size:25px;
+}
+.icons2{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    float: left;
+    font-size:25px;
+    margin-left:30px;
+}
+
+
+.profile img{
+    width: 30px;
+    height: 30px;
+    border-radius:100px;
+}
+.yt-suggestions{
+    border-top: 1px solid #525252;
+    display: flex;
+    background: #282828;
+    width:100%;
+    overflow-x: scroll;
+    height:35px;
+    border-bottom:solid 1px grey;
+}
+.suggest{
+    margin-top:1.5px;
+    padding: 6px 11px 6px 11px;
+    font-size: 14px;
+    border-radius: 100px;
+    color: #fff;
+    height:30px;
+    border: 1px solid #525252;
+    background: #3e3e3e;
+    white-space: nowrap;
+    margin-left:2%;
+    color:black;
+    font-weight: bold;
+}
+
+.suggest:hover{
+    background-color:white;
+    cursor:pointer;
+}
+    
+.yt-feedback{
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px 0 5px;
+    color: #3EA6FF;
+    font-weight: bold;
+    font-size: 14px;
+}
+.video-container{
+    width:100%;
+    height:78vh;
+    overflow-x:hidden;
+    border-bottom:solid 1px grey;
+}
+.video-thumbnail{
+    width:100%;
+   height:275px;
+   border-bottom:solid 3px grey;
+}
+.creator-img{
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.video{
+    width:100%;
+    height:200px;
+    border-bottom:solid 1px black;
+}
+.creator-img{
+    width:40px;
+    height:40px;
+    border-radius:100px;
+    margin-left:10px;
+    margin-top:8px;
+}
+.ytvideo_title{
+    margin-left:20%;
+    margin-top:3px;
+    color:white;
+}
+.creator-name-views{
+    color:grey;
+}
+.yt-bottom{
+     width: 100%;
+    max-height: 50px;
+    display: flex;
+    background: #282828;
+    border-top: 1px solid #525252;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+.bottom-icons{
+    width: 50px;
+    height: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size:25px;
+    margin-left:20px;
+    float:left;
+}
+.icon-name{
+    width: 50px;
+    height: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size:25px;
+    margin-left:20px;
+    float:left;
+}
+.yt-bottom .item{
+    text-align: center;
+    width: 100%;
+    color: #909090;
+    padding-top: 6px;
+    width: 100%;
+    height: 50px;
+}
+.item:hover{
+    background-color:black;
+}
+
+.yt-bottom .item .text{
+    font-size: 10px;
+}
+
+
+.fa-plus-circle{
+    font-size:30px;
+}
+.fa-youtube,.fa-home{
+    font-size:24px;
+    margin-top:3px;
+}
+.shorts_{
+    width:100%;
+    height:100vh;
+    background-color:black;
+    color:white;
+}
+.swiper-slide{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+video{
+    width:100%;
+    height:100vh;
+}
+
+.back{
+    color:white;
+    background: rgba(0,0,0,0);
+  position: absolute;
+  display: flex;
+  top:3%;
+  left:3%;
+  align-items: center;
+  justify-content: center;
+  font-size:30px;
+}
+.likes{
+    color:white;
+    background: rgba(0,0,0,0);
+  position: absolute;
+  display: flex;
+  top:40%;
+  left:80%;
+  align-items: center;
+  justify-content: center;
+  font-size:60px;
+}
+.likes:hover{
+    color:red;
+}
+.shorts_text{
+    position:relative;
+}
+.button{
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 16px 31px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin-left:13px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        margin-top:10px;
+        position:absolute;
+    }
+  /*  .button_section{
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 16px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin-left:13px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        margin-top:10px;
+        position:absolute;
+    }
+*/
+.button1 {
+        background-color: #f44336;
+        color: white;
+        border-radius: 20px;
+        top:40%;
+        left:63%;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        position:absolute;
+    }
+  /*  .button2 {
+        background-color: #f44336;
+        color: white;
+        border-radius: 20px;
+        top:55%;
+        left:55%;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+     .button3 {
+        background-color: #f44336;
+        color: white;
+        border-radius: 20px;
+        top:70%;
+        left:60%;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+    */
+    .button1:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+    
+    .counterStat {
+        color: white;
+        font-size: 16px;
+    }
+    
+.yt-loader,.yt-shorts-loader{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+    display:flex;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+.loading-yt,.loading-yt-shorts{
+    width:200px;
+    height:200px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:50%;
+}
+.loading-studio{
+    width:200px;
+    height:200px;
+    display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  //margin-top:50%;
+}
+
+.shorts-name{
+        color: white;
+        border-radius: 20px;
+        top:85.5%;
+        left:5%;
+        font-weight:bold;
+        position:absolute;
+}
+.shorts-creator-profile{
+    border-radius: 100px;
+        top:89%;
+        left:5%;
+        width:30px;
+        height:30px;
+        position:absolute;
+}
+.shorts-creator-name{
+        top:89%;
+        left:14.5%;
+        position:absolute;
+        background-color:black;
+        padding:6px 6px 6px 6px;
+}
+.shorts-channel-subscribe{
+    top:88.5%;
+        left:47.5%;
+        position:absolute;
+        padding:6px 6px 6px 6px;
+    
+        
+}
+.button_subscribe{
+    background-color:red;
+    font-weight:bold;
+    text-decoration:none;
+    color:white;
+    width:100px;
+    height:25px;
+    border: none;
+}
+.button_subscribed{
+    background-color:black;
+    font-weight:bold;
+    text-decoration:none;
+    color:white;
+    width:100px;
+    height:25px;
+    border: none;
+}
+ .commentbutton{
+    background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 23px 44px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin-left:13px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        margin-top:10px;
+        position:absolute;
+        top:55%;
+        left:63%;
+        border-radius:20px;
+        
+    }
+.sharebutton{
+    background-color: blue;
+        border: none;
+        color: white;
+        padding: 23px 44px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin-left:13px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        margin-top:10px;
+        position:absolute;
+        top:70%;
+        left:63%;
+        border-radius:20px;
+        
+    }
+.shortscomments_{
+    width:100%;
+    height:100vh;
+    background-color:black;
+    color:white;
+    overflow:scroll;
+}
+.shortscommentback{
+    width:100%;
+    height:30px;
+    border:none;
+    background-color:white;
+    font-weight:bold;
+    color:black;
+    
+}
+.videoplay{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+    color:white;
+}
+.yt_video_1{
+    width:100%;
+    height:30%;
+}
+.video_title_1{
+    width:80%;
+    height:50px;
+   margin-top:10px;
+   //position:absolute;
+    color:white;
+    display:flex;
+    font-size:20px;
+    
+
+}
+.line{
+    width:100%;
+    border-top:solid 2px red;
+}
+.fa-arrow-down{
+    float:right;
+}
+.video_details{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+.upload_date{
+    color:grey;
+    margin-left:20px;
+}
+.likes_and_dislikes_icons{
+    display:flex;
+    align-items:center;
+}
+.fa-thumbs-up,.fa-thumbs-down,.fa-share,.fa-download,.fa-save{
+    font-size:25px;
+    padding-left:30px;
+    padding-top:10px;
+}
+.fa-thumbs-up:hover{
+    color:red;
+}
+.fa-thumbs-down:hover{
+    color:blue;
+}
+.fa-share:hover{
+    color:cyan;
+}
+.fa-download:hover{
+    color:green;
+}
+.fa-save:hover{
+    color:yellow;
+}
+.videocreator_img{
+    display:flex;
+    align-items:center;
+}
+.creatorimg{
+    width:35px;
+    height:35px;
+    border-radius:40px;
+    margin-left:10px;
+    margin-top:4px;
+}
+.createname{
+    margin-left:10px;
+    font-size:15px;
+    font-weight:bold;
+    margin-top:-8px;
+}
+.creator_channel_subs{
+    float:right;
+    margin-left:auto;
+    width:100px;
+    background-color:red;
+    border: none;
+    margin-right:20px;
+    height:30px;
+    border-radius:20px;
+    color:white;
+}
+.creator_channel_subs1{
+    float:right;
+    margin-left:auto;
+    width:100px;
+    background-color:black;
+    color:white;
+    border: none;
+    margin-right:20px;
+    height:30px;
+    border-radius:20px;
+}
+.subscribers{
+    margin-left:55px;
+    font-size:12px;
+    margin-top:-16px;
+}
+.line2{
+    margin-top:3px;
+}
+.video_comments{
+    width:100%;
+    height:50px;
+    padding-left:20px;
+    padding-top:3px;
+}
+.comments_video{
+    padding-left:30px;
+    color:grey;
+    padding-top:3px;
+}
+.suggested_videos{
+    width:100%;
+    height:27vh;
+    overflow-y:scroll;
+}
+.suggestion_videos{
+    width:100%;
+    height:100%;
+}
+.text_onvideo{
+    position:relative;
+}
+.videoclose_button{
+    position:absolute;
+    top:5%;
+    right:5%;
+    font-size:40px;
+}
+.subscribe_homepage{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background-color:#282828;
+}
+.subscribedchannels{
+    width:100%;
+    height:65px;
+    overflow-x:scroll;
+    border-bottom:solid 1px grey;
+    display:flex;
+    align-items:center;
+    position:relative;
+    
+    
+}
+.subscribedchannels1{
+    width:80%;
+    height:65px;
+    border-bottom:solid 1px grey;
+    display:flex;
+    overflow-x:scroll;
+    position:absolute;
+    
+}
+.subscribedchannelsimage{
+    width:60px;
+    border-radius:40px;
+    margin-left:5px;
+    border:solid 2px black;
+    border-style:solid;
+}
+.all_subscribes{
+
+    position:absolute;
+    margin-left:150%;
+}
+.subscribe-container{
+    width:100%;
+    height:67vh;
+    overflow:scroll;
+    border-bottom:solid 1px grey;
+}
+.notifications{
+    background-color:#282828;
+    color:white;
+    width:100%;
+    height:100vh;
+    
+}
+.top_{
+    width:100%;
+    height:8%;
+    border-bottom:1px solid grey;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+.fa-arrow-left{
+    font-size:30px;
+    padding-left:10px;
+    cursor:pointer;
+}
+.notfi{
+    padding-left:10px;
+    font-size:20px; 
+}
+.fa-ellipsis-v{
+    font-size:30px;
+    padding-left:180px;
+}
+.no_messages{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:80%;
+    justify-content:center;
+    font-size:20px;
+    color:grey;
+    
+}
+.yt_search{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+}
+.yt_searching{
+    width:100%;
+    height:8%;
+    border-bottom: solid 1px grey;
+    display:flex;
+    align-items:center;
+    color:white;
+}
+.search_{
+     width:75%;
+     height:60%;
+     background-color:grey;
+     margin-left:10px;
+     outline:none;
+}.fa-microphone{
+    font-size:25px;
+    margin-left:15px;
+}
+.search_items{
+    width:100%;
+    height:92%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:grey;
+}
+.profile_photo{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+    color:white;
+}
+.my_channel_logo{
+    width:250px;
+    height:200px;
+    border-radius:10px;
+     display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.channel_visit{
+    text-align:center;
+    padding-top:20px;
+    font-family:cursive;
+    font-size:20px;
+}
+.visit_channel{
+    width:70%;
+    height:50px;
+    background-color:red;
+    border:solid 1px grey;
+    border-radius:10px;
+    color:white;
+    margin-left: auto;
+  margin-right: auto;
+  display:block;
+}
+.close_profile{
+    float:right;
+    font-size:30px;
+    padding:10px 10px 0px 0px;
+}
+a{
+    text-decoration:none;
+    color:white;
+}
+.yt-library{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+    overflow:hidden;
+}
+.recent_items{
+    font-size:20px;
+    padding-left:10px;
+    color:white;
+    width:100%;
+    height:20%;
+    border-bottom:solid 1px grey;
+}
+.recent_videos{
+    width:100%;
+    height:90px;
+    overflow-x:scroll;
+    display:flex;
+
+}
+.recent_videos img{
+    width:200px;
+    height:100%;
+    margin-left:10px;
+}
+.items_library{
+    width:100%;
+    height:250px;
+    border-bottom:solid 1px grey;
+    
+}
+.yt_histroy{
+    color:white;
+    display:flex;
+    padding-top:20px;
+}
+.fa-video-camera,.fa-file-video-o,.fa-check,.fa-film,.fa-clock-o{
+    font-size:25px;
+    padding-left:20px;
+
+}
+.items__{
+    padding-left:10px;
+    font-size:20px;
+}
+.playlists{
+width:100%;
+height:40px;
+
+    color:white;
+}
+.play_lists{
+    padding-left:10px;
+    padding:10px;
+    
+
+    
+}
+.addplaylists{
+    display:flex;
+ padding-left:10px;
+ padding-top:10px;
+ color:grey;
+ 
+}
+.fa-plus{
+    padding-right:10px;
+    padding-top:2px;
+    color:lightblue;
+}
+.studio{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+}
+.create_{
+    font-size:30px;
+    padding:20px;
+    font-weight:bold;
+    color:white;
+}
+.createitems{
+    display:flex;
+}
+.fa-upload,.fa-television,.fa-list,.fa-toggle-on{
+    font-size:30px;
+    padding:20px;
+    color:white;
+    padding-left:40px;
+}
+.createtoolname{
+    font-size:30px;
+    padding-top:15px;
+    padding-bottom:15px;
+    color:white;
+    font-family:cursive;
+}
+.createtoolname1{
+    font-size:40px;
+    padding-top:20px;
+    padding-bottom:15px;
+    color:white;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+.ytstudio{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+}
+.studioloader{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+}
+.na_me{
+    margin-left:10px;
+    color:grey;
+}
+.godzilla{
+    width:60px;
+    height:60px;
+    border-radius:50px;
+    margin-left:20px;
+    
+}
+.subscribe_count{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:80px;
+    border-bottom:solid 3px grey;
+}
+.no_videos_{
+    text-align:center;
+}
+.anal{
+    margin-left:20px;
+    color:white;
+    margin-top:10px;
+}
+.analy{
+    margin-left:20px;
+    color:grey;
+    margin-top:1px;
+}
+.analytics{
+    width:100%;
+    height:130px;
+    border-bottom:solid 3px grey;
+}
+.analysis_{
+    display:flex;
+}
+.watchtime{
+    padding-top:7px;
+    color:white;
+    float:left;
+    margin-left:30px;
+}
+.watch_time{
+    padding-top:7px;
+    color:white;
+    float:right;
+    margin-left:120px;
+}
+.no_vid{
+    text-align:center;
+    padding-top:20px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+}
+.fa-sign-out{
+    font-size:70px;
+    margin-left:40%;
+    margin-top:20%;
+    color:grey;
+}
+.bars_{
+    width:100%;
+    height:100vh;
+    background-color:#282828;
+}
+.fa-window-close{
+    float:right;
+    font-size:30px;
+    padding:10px;
+}
+.fa-dashboard,.fa-play-circle,.fa-newspaper-o,.fa-clipboard,.fa-bar-chart{
+    font-size:30px;
+    display:flex;
+    padding-left:30px;
+    padding-top:16px;
+    padding-bottom:20px;
+    color:grey;
+}
+.dashboard{
+    padding-left:10px;
+}
+        
+    </style>
+    <!-- bars -->
+    
+    <div class="bars_" id="barsopen">
+        
+<i class="fa fa-window-close" id="barsclose"></i>
+<br><br>
+<div class="bar-items">
+<i class="fa fa-dashboard"><h4 class="dashboard">Dashboard</h4></i>
+</div>
+
+<div class="bar-items">
+<i class="fa fa-play-circle"><h4 class="dashboard">Videos</h4></i>
+</div>
+
+<div class="bar-items">
+<i class="fa fa-clipboard"><h4 class="dashboard">Playlists</h4></i>
+</div>
+
+<div class="bar-items">
+<i class="fa fa-newspaper-o"><h4 class="dashboard">Comments</h4></i>
+</div>
+
+<div class="bar-items">
+<i class="fa fa-bar-chart"><h4 class="dashboard">Analytics</h4></i>
+</div>
+
+    </div>
+    
+    
+    
+    <!-- studio loader -->
+    <div class="studioloader" id="loadingstudio">
+    <div class="loaderimage"></div>
+        <img src="https://dl.dropbox.com/s/cr8m8t05kbdgbhh/images__1_-removebg-preview.png?dl=0" class="loading-studio">
+        
+    
+    
+    </div>
+    
+    <!-- yt Studio -->
+    
+    <div class="ytstudio" id="yt-studio">
+            
+         <div class="yt-header">
+            
+              <div class="icons1">
+              <i class="fa fa-bars" id="barsopen_"></i>
+              </div>
+               <h4 class="icons2">Dashboard</h4>
+                 <div class="icons profile">
+                <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0">
+            </div>
+        <div class="icons"><i class="fa fa-envelope"></i></div>
+            </div>
+            
+        <div class="subscribe_count">
+            <img src="http://api.sololearn.com/Uploads/Avatars/19457191.jpg" class="godzilla">
+            <div class="na_me">
+            <h4>GodZilla </h4>
+            <h5>No Subscribers</h5>
+            </div>
+        </div>
+        <div class="analytics">
+            <h4 class="anal">Analytics</h4>
+            <h5 class="analy">Last 28 Days</h5>
+            <div class="analysis_">
+<h4 class="watchtime">Watch Time (hrs)</h4>
+<h4 class="watch_time">0.00hrs</h4>
+</div>
+
+
+ <div class="analysis_">
+<h4 class="watchtime">RealViews Count</h4>
+<h4 class="watch_time">0.0Views</h4>
+</div>
+
+ <div class="analysis_">
+<h4 class="watchtime">Subscriber Change</h4>
+<h4 class="watch_time"> No subs</h4>
+</div> </div>
+        <div class="novideos_onchannel">
+            <h4 class="no_vid">This Channel Hasn't Posted Any Videos</h4>
+        </div>
+        
+        <div class="exitytsudio">
+            <i class="fa fa-sign-out" id="exit_ytstudio"></i>
+        </div>
+
+        
+    </div>
+    
+    
+    
+    
+    
+    <!-- Create/Story -->
+    
+    <div class="studio" id="studio_">
+        <div class="create_">Create</div>
+        
+        
+    <div class="createitems" onclick="videoupload()">
+        <i class="fa fa-upload"></i>
+        <h3 class="createtoolname">Upload A Video</h3>
+    </div>
+        <div class="createitems" onclick="shortsupload()">
+        <i class="fa fa-upload"></i>
+        <h3 class="createtoolname">Upload A Shorts</h3>
+    </div>
+     <div class="createitems" onclick="live()">
+        <i class="fa fa-television"></i>
+        <h3 class="createtoolname">Go Live</h3>
+    </div>
+     <div class="createitems" onclick="post()">
+        <i class="fa fa-list"></i>
+        <h3 class="createtoolname">Create a Post</h3>
+    </div>
+    <div class="createitems">
+        <i class="fa fa-toggle-on"></i>
+        <h3 class="createtoolname" id="switchstudio">Switch To Studio</h3>
+    </div>
+    <div class="createitems">
+    
+        <h3 class="createtoolname1" id="backhome_">❎</h3>
+    </div>
+    
+    </div>
+     
+    
+    <!--library-->
+    <div class="yt-library" id="library_items">
+    
+    
+    
+         <div class="yt-header">
+                <img src="https://dl.dropbox.com/s/jplkrpwnxkfqe4t/IMG_20210715_161730.png?dl=0" class="yt-logo-header">
+                 <div class="icons profile">
+                <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0">
+            </div>
+            <div class="icons">
+                <i class="fa fa-search"></i>
+                </div>
+                <div class="icons">
+                <i class="fa fa-bell"></i>
+            </div>
+            </div>
+            
+    <div class="recent_items">
+    <h4>Recent</h4>
+    <div class="recent_videos">
+        <img src="https://dl.dropbox.com/s/9y6zo7sxg0sy5gz/images%20%2813%29.jpeg?dl=0">
+       <img src="https://dl.dropbox.com/s/5x3vuimaipqu932/_gH5FhMq8w4-HD.jpg?dl=0">
+       <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0">
+        <img src="https://dl.dropbox.com/s/cci3xp02xpfh8n2/images%20%2812%29.jpeg?dl=0">
+    </div>
+    </div>
+    
+    
+    <div class="items_library">
+    <div class="yt_histroy">
+        <i class="fa fa-video-camera"></i>
+        <h4 class="items__"><a href="#">Histroy</a></h4>
+        </div>
+    
+    <div class="yt_histroy">
+        <i class="fa fa-file-video-o"></i>
+        <h4 class="items__">Your Videos</h4>
+        </div>
+
+    
+    <div class="yt_histroy">
+        <i class="fa fa-check"></i>
+        <h4 class="items__">Downloads</h4>
+        </div>
+    
+    <div class="yt_histroy">
+        <i class="fa fa-film"></i>
+        <h4 class="items__">Your Movies</h4>
+        </div>
+    
+    <div class="yt_histroy">
+        <i class="fa fa-clock-o"></i>
+        <h4 class="items__">Watch Later</h4>
+        </div>
+    </div>
+    
+    <div class="playlists">
+        <h4 class="play_lists">Playlists</h4>
+        <div class="addplaylists">
+        <i class="fa fa-plus"></i>
+        <h4>Add playlists</h4>
+        </div>
+    </div>
+    
+    
+    
+    <div class="yt-bottom">
+      <div class="item" id="back__home">
+                 <i class="fa fa-home"></i>
+                <div class="text">
+                    Home
+                </div>
+            </div>
+    <!--end-->
+    </div>
+
+
+
+    </div>
+    
+    
+    
+    
+    
+    <!--youtube search-->
+    <div class="yt_search" id="search_yt">
+        <div class="yt_searching">
+            <i class="fa fa-arrow-left" id="back_from_search"></i>
+         <input type="search" placeholder="Search....." class="search_">
+         <i class="fa fa-microphone"></i>
+        </div>
+        <div class="search_items">
+     <h4>Oops..! SearchBar Temporary Unavailable</h4>
+     </div>
+    </div>
+    
+    
+    <!--Notifications-->
+    
+    <div class="notifications" id="notify">
+    
+        <div class="top_">
+            <i class="fa fa-arrow-left" id="back_notification"></i>
+            <h4 class="notfi">Notifications</h4>
+             <i class="fa fa-ellipsis-v"></i>
+        </div>
+          <div class="yt-suggestions">
+    <div class="suggest">
+                All
+            </div>
+            <div class="suggest">
+                Mentions
+            </div>
+            </div>
+    
+    <div class="no_messages">
+        <b>No Notifications</b>
+    </div>
+    </div>
+    
+    
+    <!--Subscriptions-->
+    <div class="subscribe_homepage" id="subscribe_channels">
+    
+ <div class="yt-header">
+                <img src="https://dl.dropbox.com/s/jplkrpwnxkfqe4t/IMG_20210715_161730.png?dl=0" class="yt-logo-header">
+                 <div class="icons profile">
+                <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0">
+            </div>
+            <div class="icons">
+                <i class="fa fa-search"></i>
+                </div>
+                <div class="icons">
+                <i class="fa fa-bell"></i>
+            </div>
+            </div>
+        <!--header end-->
+       
+     <div class="subscribedchannels">
+        <div class="subscribedchannels1">
+        <img src="https://dl.dropbox.com/s/9y6zo7sxg0sy5gz/images%20%2813%29.jpeg?dl=0" class="subscribedchannelsimage">
+            <img src="https://dl.dropbox.com/s/opcn7sjc0yyjf7t/download.jpeg?dl=0" class="subscribedchannelsimage">
+            <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0" class="subscribedchannelsimage">
+            <img src="https://dl.dropbox.com/s/gstn7c3yzyr86f5/images%20%2814%29.jpeg?dl=0" class="subscribedchannelsimage">
+            <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0" class="subscribedchannelsimage">
+            <img src="https://dl.dropbox.com/s/acgg3ds2spek6gk/utVEzRQNw5k-HD.jpg?dl=0" class="subscribedchannelsimage">
+        </div>
+    </div>
+    <!--end-->
+    <div class="yt-suggestions">
+            <div class="suggest">
+                Explore <i class="fa fa-search"></i>
+            </div>
+               <div class="suggest">
+                All
+            </div>
+            <div class="suggest">
+                Today
+            </div>
+            <div class="suggest">
+                Unwatched
+            </div>
+             <div class="suggest">
+                Live 
+            </div>
+            <div class="suggest">
+                Posts
+            </div>
+            
+             <div class="suggest">
+                Community
+            </div>
+            
+              <div class="suggest">
+                Continue Watching
+            </div>
+            <div class="yt-feedback">
+                SETTINGS
+            </div> 
+            </div>
+    
+    <!--end-->
+    <div class="subscribe-container">
+    
+     <div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/cci3xp02xpfh8n2/images%20%2812%29.jpeg?dl=0" class="video"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/9y6zo7sxg0sy5gz/images%20%2813%29.jpeg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Kya Mujhe Pyaar Hai x Tuhi meri shab hai x Labon ko| Khudgarz</h4>
+                    <h5 class="creator-name-views">Khudgarz Official • 22MViews • 3months Ago</h5>
+                </div>
+                </div>
+
+
+   
+                <div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/5x3vuimaipqu932/_gH5FhMq8w4-HD.jpg?dl=0" class="video"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/opcn7sjc0yyjf7t/download.jpeg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Responsive Food Menu Without Media Queries | Responsive CSS Grid </h4>
+                    <h5 class="creator-name-views">Coding Artist • 103KViews • 6months Ago</h5>
+                </div>
+                </div>
+                <div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0" class="video"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Atomic Breath Godzilla Sound Effect | King of Monsters </h4>
+                    <h5 class="creator-name-views">Godzilla AtomicSound • 660KViews • 1year Ago</h5>
+                </div>
+ </div>
+    
+    
+    <!--bottom-->
+    
+    </div>
+    <!--...-->
+    <div class="yt-bottom">
+    <div class="item" id="back_to_home">
+                 <i class="fa fa-home"></i>
+                <div class="text">
+                    Home
+                </div>
+            </div>
+            </div>
+    
+    </div>
+    
+    <!--end-->
+    <div class="videoplay" id="video_playing1">
+        <div class="text_onvideo">
+    <video controls loop class="yt_video_1">
+    
+        <source src="https://dl.dropbox.com/s/i233pq2sv7z8xpy/yt1s.com%20-%20Kya%20Mujhe%20Pyar%20Hai%20x%20Tu%20Hi%20Meri%20Shab%20Hai%20x%20Labon%20Ko%20I%20Khudgharz_v240P.mp4?dl=0">
+        
+
+    </video>
+    <div class="videoclose_button" id="videoclose_1">
+        <i class="fa fa-close"></i>
+    </div>
+    </div>
+    <hr class="line">
+    <div class="video_details">
+    <div class="video_title_1">
+        <h4>Kya Mujhe Pyaar Hai x Tuhi meri shab hai x Labon ko| Khudgarz</h4>
+        
+            
+        </div>
+        <div class="description">
+        <i class="fa fa-arrow-down"></i>
+        </div>
+    </div>
+    <div class="upload_date">
+        <h5>22MViews • 3months Ago #Viral #jamming</h5>
+    </div>
+<div class="Likes_and_dislikes_icons">
+    <i class="fa fa-thumbs-up" onclick="myfunc1()"></i>1.8M
+    <i class="fa fa-thumbs-down" onclick="myfunc1()"></i>7.4k
+    <i class="fa fa-share"></i>
+    <i class="fa fa-save"></i>
+    <i class="fa fa-download"></i>
+</div><br>
+    <hr>
+    <div class="videocreator_img">
+        <img src="https://dl.dropbox.com/s/9y6zo7sxg0sy5gz/images%20%2813%29.jpeg?dl=0" class="creatorimg"><div class="createname">Khudgarz Official</div>
+        <button class="creator_channel_subs" id="subs" onclick="myfunc()">Subscribe</button>
+        <button class="creator_channel_subs1" id="subs1">Subscribed</button>
+    </div>
+    <div class="subscribers">789K Subscribers</div>
+    <hr class="line2">
+    
+    
+    
+    <div class="video_comments">
+        <h4>Comments •</h4>
+        <h5 class="comments_video">ALAN WALKER IS THE BEST</h5>
+    </div>
+    <hr>
+    <div class="suggested_videos">
+        <img src="https://dl.dropbox.com/s/5x3vuimaipqu932/_gH5FhMq8w4-HD.jpg?dl=0" class="suggestion_videos">
+    </div>
+    </div>
+     
+    
+     <div class="videoplay" id="video_playing2">
+        <div class="text_onvideo">
+    
+    <img src="https://dl.dropbox.com/s/gr6cmj6f5pc50a6/images%20%2815%29.jpeg?dl=0" class="yt_video_1">
+      
+        
+    
+    <div class="videoclose_button" id="videoclose_2">
+        <i class="fa fa-close"></i>
+    </div>
+    </div>
+    <hr class="line">
+    <div class="video_details">
+    <div class="video_title_1">
+        <h4>Responsive Food Menu Without Media Queries | Responsive </h4>
+        
+            
+        </div>
+        <div class="description">
+        <i class="fa fa-arrow-down"></i>
+        </div>
+    </div>
+    <div class="upload_date">
+        <h5>103KViews • 6months Ago #Css #Coding</h5>
+    </div>
+<div class="Likes_and_dislikes_icons">
+    <i class="fa fa-thumbs-up" onclick="myfunc1()"></i>89K
+    <i class="fa fa-thumbs-down" onclick="myfunc1()"></i>5.6K
+    <i class="fa fa-share"></i>
+    <i class="fa fa-save"></i>
+    <i class="fa fa-download"></i>
+</div><br>
+    <hr>
+    <div class="videocreator_img">
+        <img src="https://dl.dropbox.com/s/opcn7sjc0yyjf7t/download.jpeg?dl=0" class="creatorimg"><div class="createname">Coding Artist</div>
+        <button class="creator_channel_subs" id="subs2" onclick="myfunc()">Subscribe</button>
+        <button class="creator_channel_subs1" id="subs3">Subscribed</button>
+    </div>
+    <div class="subscribers">100K Subscribers</div>
+    <hr class="line2">
+    
+    
+    
+    <div class="video_comments">
+        <h4>Comments •</h4>
+        <h5 class="comments_video">#1 Your Codes are Awesome😇</h5>
+    </div>
+    <hr>
+    <div class="suggested_videos">
+        <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0" class="suggestion_videos">
+    </div>
+    </div>
+    
+    
+    
+    
+    <div class="videoplay" id="video_playing3">
+       <div class="text_onvideo">
+       
+    <video controls loop class="yt_video_1">
+    
+       <source src="https://dl.dropbox.com/s/3ja9zkncp3v6wyp/Atomic%20breath%20_Fan%20made_%20sound%20effect.mp4?dl=0">
+    </video>
+    
+
+    <div class="videoclose_button" id="videoclose_3">
+        <i class="fa fa-close"></i>
+    </div>
+    </div>
+    <hr class="line">
+    <div class="video_details">
+    <div class="video_title_1">
+        <h4>Atomic Breath Godzilla Sound Effect</h4>
+        
+            
+        </div>
+        <div class="description">
+        <i class="fa fa-arrow-down"></i>
+        </div>
+    </div>
+    <div class="upload_date">
+        <h5>660kViews • 1year Ago #atomic #godzilla</h5>
+    </div>
+<div class="Likes_and_dislikes_icons">
+    <i class="fa fa-thumbs-up" onclick="myfunc1()"></i>79K
+    <i class="fa fa-thumbs-down" onclick="myfunc1()"></i>2.6k
+    <i class="fa fa-share"></i>
+    <i class="fa fa-save"></i>
+    <i class="fa fa-download"></i>
+</div><br>
+    <hr>
+    <div class="videocreator_img">
+        <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0" class="creatorimg"><div class="createname">GodZilla AtomicSound</div>
+        <button class="creator_channel_subs" id="subs4" onclick="myfunc()">Subscribe</button>
+        <button class="creator_channel_subs1" id="subs5">Subscribed</button>
+    </div>
+    <div class="subscribers">120K Subscribers</div>
+    <hr class="line2">
+    
+    
+    
+    <div class="video_comments">
+        <h4>Comments •</h4>
+        <h5 class="comments_video">#1 Godzilla King of Monsters | King of Monsters</h5>
+    </div>
+    <hr>
+    <div class="suggested_videos">
+        <img src="https://dl.dropbox.com/s/acgg3ds2spek6gk/utVEzRQNw5k-HD.jpg?dl=0" class="suggestion_videos">
+    </div>
+    </div>
+    
+    
+    
+    
+    <div class="videoplay" id="video_playing4">
+        <div class="text_onvideo">
+        
+    <video controls loop class="yt_video_1">
+    
+        <source src="https://dl.dropbox.com/s/kq583grbg3oil5z/yt1s.com%20-%20Alan%20Walker%20%20Play%20Instrumental%20Ringtone%20%20Ringtones%20X_360p.mp4?dl=0">
+    </video>
+    <div class="videoclose_button" id="videoclose_4">
+        <i class="fa fa-close"></i>
+    </div>
+    </div>
+    <hr class="line">
+    <div class="video_details">
+    <div class="video_title_1">
+        <h4>Alan Walker - Play instrumental Ringtone </h4>
+        
+            
+        </div>
+        <div class="description">
+        <i class="fa fa-arrow-down"></i>
+        </div>
+    </div>
+    <div class="upload_date">
+        <h5>266MViews • 7months Ago #Alan Walker #Ringtone</h5>
+    </div>
+<div class="Likes_and_dislikes_icons">
+    <i class="fa fa-thumbs-up" onclick="myfunc1()"></i>78K
+    <i class="fa fa-thumbs-down" onclick="myfunc1()"></i>7.2k
+    <i class="fa fa-share"></i>
+    <i class="fa fa-save"></i>
+    <i class="fa fa-download"></i>
+</div><br>
+    <hr>
+    <div class="videocreator_img">
+        <img src="https://dl.dropbox.com/s/gstn7c3yzyr86f5/images%20%2814%29.jpeg?dl=0" class="creatorimg"><div class="createname">Ringtones X</div>
+        <button class="creator_channel_subs" id="subs6" onclick="myfunc()">Subscribe</button>
+        <button class="creator_channel_subs1" id="subs7">Subscribed</button>
+    </div>
+    <div class="subscribers">130K Subscribers</div>
+    <hr class="line2">
+    
+    
+    
+    <div class="video_comments">
+        <h4>Comments •</h4>
+        <h5 class="comments_video">#1 Amazing Ringtone</h5>
+    </div>
+    <hr>
+    <div class="suggested_videos">
+        <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0" class="suggestion_videos">
+    </div>
+    </div>
+    
+    
+    
+    <div class="videoplay" id="video_playing5">
+        <div class="text_onvideo">
+        
+    <video controls loop class="yt_video_1">
+
+        <source src="https://dl.dropbox.com/s/sj4fdjb8jwash24/yt1s.com%20-%20%20I%20t%20s%20%20S%20o%20%20C%20O%20L%20D%20%20Ringtones%20pro%20%20Shorts_v240P.mp4?dl=0">
+    </video>
+    
+    <div class="videoclose_button" id="videoclose_5">
+        <i class="fa fa-close"></i>
+    </div>
+    </div>
+    <hr class="line">
+    <div class="video_details">
+    <div class="video_title_1">
+        <h4>Neffex - COLD | Popilar rungtones | Ringtones X</h4>
+        
+            
+        </div>
+        <div class="description">
+        <i class="fa fa-arrow-down"></i>
+        </div>
+    </div>
+    <div class="upload_date">
+        <h5>1.2MViews • 9months Ago #Viral #Neffex</h5>
+    </div>
+<div class="Likes_and_dislikes_icons">
+    <i class="fa fa-thumbs-up" onclick="myfunc1()"></i>67K
+    <i class="fa fa-thumbs-down" onclick="myfunc1()"></i>6.4k
+    <i class="fa fa-share"></i>
+    <i class="fa fa-save"></i>
+    <i class="fa fa-download"></i>
+</div><br>
+    <hr>
+    <div class="videocreator_img">
+        <img src="https://dl.dropbox.com/s/gstn7c3yzyr86f5/images%20%2814%29.jpeg?dl=0" class="creatorimg"><div class="createname">Ringtones X</div>
+        <button class="creator_channel_subs" id="subs8" onclick="myfunc()">Subscribe</button>
+        <button class="creator_channel_subs1" id="subs9">Subscribed</button>
+    </div>
+    <div class="subscribers">130K Subscribers</div>
+    <hr class="line2">
+    
+    
+    
+    <div class="video_comments">
+        <h4>Comments •</h4>
+        <h5 class="comments_video">#1 Best Ringtone </h5>
+    </div>
+    <hr>
+    <div class="suggested_videos">
+        <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0" class="suggestion_videos">
+    </div>
+    </div>
+    
+    
+     <!--Yt shorts Loader -->
+    <div class="yt-shorts-loader" id="yt-shorts-loading">
+        <img src="https://dl.dropbox.com/s/2phnh01yudab2zr/6BiRNiy1RMpIrDn5uJSH7GgbSyqXx0HALFbB-removebg-preview.png?dl=0" class="loading-yt-shorts">
+    </div>
+    
+    <!--shorts comments-->
+    
+    <div class="shortscomments_" id="shortscomments">
+        
+        <!-- begin wwww.htmlcommentbox.com -->
+ <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...
+ </div>
+ <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+ <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24Bqua7nw9M1HXJPLo99JvC%2F"+"&opts=16798&num=10&ts=1626409675329");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+<!-- end www.htmlcommentbox.com -->
+        <button class="shortscommentback" id="shortcommentback">Back</button>
+    </div>
+    
+    
+    <!--Yt loader-->
+    <div class="yt-loader" id="yt-loading">
+    <img src="https://dl.dropbox.com/s/96vziusqmb2l5b1/images-removebg-preview.png?dl=0" class="loading-yt">
+    </div>
+   
+
+    <!--yt shorts-->
+    
+
+    <div id="shorts" class="shorts_">
+    
+   <div class="swiper-container"> 
+  
+  <div class="swiper-wrapper"> 
+  
+  <div class="swiper-slide">
+      
+      
+      <div class="shorts_text">
+      
+      <video controls loop>
+          <source src="https://dl.dropbox.com/s/z38g42vpq3nule8/yt1s.com%20-%20Perfect%20body%20%20shorts.mp4?dl=0" class="shorts1">
+      </video>
+      <div class="back" id="back_2"><i class="fa fa-arrow-left"></i></div>
+      
+      <div class="CountLike" id="Like_Count">
+<button class="button button1">
+<i class="fa fa-heart"></i><br><span class="counterStat">...</span></button>
+    </div>
+    
+    
+    <button class="commentbutton" id="shorts_comments2">
+<i class="fa fa-comment"></i><span>...</span>
+</button>
+
+    <button class="sharebutton" id="">
+<i class="fa fa-share-alt"></i><span>...</span>
+</button>
+
+    
+    <div class="shorts-name">
+        <h4>Perfect Body with a perfect smile</h4>
+    </div>
+    <div>
+        <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0" class="shorts-creator-profile">
+    </div>
+    <div class="shorts-creator-name">Ishapreet Dang</div>
+    <div class="shorts-channel-subscribe">
+        <button id="subscribe" class="button_subscribe">Subscribe</button>
+        <button id="subscribed" class="button_subscribed">Subscribed</button>
+    </div>
+    
+</div>
+  </div> 
+  
+  
+  <div class="swiper-slide">
+      
+    
+      <div class="shorts_text">
+    
+     <video controls loop>
+          <source src="https://dl.dropbox.com/s/g6kllcmr0630y04/yt1s.com%20-%20Pubg%20ringtone%20%20Pubg%20theme%20song%20%20Pubg%20ringtone%20remix%20%20Pubg%20WhatsApp%20status_v240P.mp4?dl=0" class="shorts1">
+          
+      </video>
+    
+      <div class="back" id="back_1"><i class="fa fa-arrow-left"></i></div>
+      
+      <div class="CountLike" id="Like_Count">
+<button class="button button1">
+<i class="fa fa-heart"></i><br><span class="counterStat">...</span></button>
+    </div>
+    
+    
+    
+    <!--comment-->
+    
+    <button class="commentbutton" id="shorts_comments1">
+<i class="fa fa-comment"></i><span>...</span>
+</button>
+
+    <button class="sharebutton" id="">
+<i class="fa fa-share-alt"></i><span>...</span>
+</button>
+
+    <!--text-->
+    
+    <div class="shorts-name">
+        <h4>PUbG Theme Song </h4>
+    </div>
+    <div>
+        <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0" class="shorts-creator-profile">
+    </div>
+    <div class="shorts-creator-name">PUBG</div>
+    <div class="shorts-channel-subscribe">
+        <button id="subscribe1" class="button_subscribe">Subscribe</button>
+        <button id="subscribed1" class="button_subscribed">Subscribed</button>
+    </div>
+    
+</div>
+      
+      
+  </div> 
+  <!--end-->
+  <div class="swiper-slide">
+      
+      <div class="shorts_text">
+    
+     <video controls loop>
+          <source src="https://dl.dropbox.com/s/ocl2lj8zhf96fd3/yt1s.com%20-%20Namo%20Namo%20Shankara%20Kedarnath%20WhatsApp%20Status%20%20%E0%A4%B9%E0%A4%B0%20%E0%A4%B9%E0%A4%B0%20%E0%A4%AE%E0%A4%B9%E0%A4%A6%E0%A4%B5%20_v240P.mp4?dl=0" class="shorts1"> 
+      </video>
+      
+      <div class="back" id="back_"><i class="fa fa-arrow-left"></i></div>
+      
+      <div class="CountLike" id="Like_Count">
+<button class="button button1">
+<i class="fa fa-heart"></i><br><span class="counterStat">...</span></button>
+    </div>
+    
+    
+    <button class="commentbutton" id="shorts_comments">
+<i class="fa fa-comment"></i><span>...</span>
+</button>
+
+    <button class="sharebutton" id="">
+<i class="fa fa-share-alt"></i><span>...</span>
+</button>
+
+
+    
+    <div class="shorts-name">
+        <h4>Namo Namo Shankara,Kedarnath status</h4>
+    </div>
+    <div>
+        <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0" class="shorts-creator-profile">
+    </div>
+    <div class="shorts-creator-name">HeartTouching</div>
+    <div class="shorts-channel-subscribe">
+        <button id="subscribe2" class="button_subscribe">Subscribe</button>
+        <button id="subscribed2" class="button_subscribed">Subscribed</button>
+    </div>
+    
+</div>
+      
+    
+  </div>
+  
+   </div> 
+    </div> 
+   
+    
+    </div> 
+    
+    
+    </div> 
+    </div>       
+        <div class="main-container" id="yt-home">
+        
+            <div class="yt-header">
+                <img src="https://dl.dropbox.com/s/jplkrpwnxkfqe4t/IMG_20210715_161730.png?dl=0" class="yt-logo-header">
+                 <div class="icons profile">
+                <img src="https://dl.dropbox.com/s/vuktr5dkg68190n/images%20%287%29.jpeg?dl=0" id="my_channel">
+            </div>
+            <div class="icons">
+                <i class="fa fa-search" id="youtube_search"></i>
+                </div>
+                <div class="icons" id="bellicon">
+                <i class="fa fa-bell"></i>
+            </div>
+            </div>
+            <div class="yt-suggestions">
+            <div class="suggest">
+                Explore <i class="fa fa-search"></i>
+            </div>
+               <div class="suggest">
+                All
+            </div>
+            <div class="suggest">
+                Music
+            </div>
+            <div class="suggest">
+                Background-Music
+            </div>
+             <div class="suggest">
+                Technology
+            </div>
+            <div class="suggest">
+                Sound-Effects
+            </div>
+            
+             <div class="suggest">
+                Development
+            </div>
+            
+              <div class="suggest">
+                Science
+            </div>
+            <div class="yt-feedback" onclick="feedback()">
+                SEND FEEDBACK
+            </div> 
+            </div>
+            
+            <div class="video-container">
+            
+            
+            
+            
+                <div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/cci3xp02xpfh8n2/images%20%2812%29.jpeg?dl=0" class="video" id="video_play_1"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/9y6zo7sxg0sy5gz/images%20%2813%29.jpeg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Kya Mujhe Pyaar Hai x Tuhi meri shab hai x Labon ko| Khudgarz</h4>
+                    <h5 class="creator-name-views">Khudgarz Official • 22MViews • 3months Ago</h5>
+                </div>
+                </div>
+                
+                
+                <div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/5x3vuimaipqu932/_gH5FhMq8w4-HD.jpg?dl=0" class="video" id="video_play_2"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/opcn7sjc0yyjf7t/download.jpeg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Responsive Food Menu Without Media Queries | Responsive CSS Grid </h4>
+                    <h5 class="creator-name-views">Coding Artist • 103KViews • 6months Ago</h5>
+                </div>
+                </div>
+<div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0" class="video" id="video_play_3"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/69ziy214faug691/gMi3OwdS1f8-HD.jpg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Atomic Breath Godzilla Sound Effect | King of Monsters </h4>
+                    <h5 class="creator-name-views">Godzilla AtomicSound • 660KViews • 1year Ago</h5>
+                </div>
+ </div>
+ 
+ 
+<div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/acgg3ds2spek6gk/utVEzRQNw5k-HD.jpg?dl=0" class="video" id="video_play_4"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/gstn7c3yzyr86f5/images%20%2814%29.jpeg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Alan Walker - Play instrumental Ringtone | Ringtones X </h4>
+                    <h5 class="creator-name-views">Ringtones X • 2.4MViews • 7months Ago</h5>
+                </div>
+ </div>
+<div class="video-thumbnail">
+    
+                
+                    <img src="https://dl.dropbox.com/s/ma654fb3a7oxf4f/uosoCjft0og-SD.jpg?dl=0" class="video" id="video_play_5"> 
+                    
+                
+                      <div class="creator-img">
+                           <img src="https://dl.dropbox.com/s/gstn7c3yzyr86f5/images%20%2814%29.jpeg?dl=0" class="creator-img">
+                           </div>
+                 <div class="ytvideo_title">
+                    <h4> Neffex - COLD | Popilar rungtones | Ringtones X </h4>
+                    <h5 class="creator-name-views">Ringtones X • 1.2MViews • 9months Ago</h5>
+                </div>
+        </div>
+       </div>
+       
+       
+       <div class="yt-bottom">
+      <div class="item">
+                 <i class="fa fa-home"></i>
+                <div class="text">
+                    Home
+                </div>
+            </div>
+            <div class="item" id="yt-shorts">
+                 <i class="fa fa-youtube"></i>
+                <div class="text">
+                   Shorts
+                </div>
+            </div>
+            <div class="item" id="create">
+                 <i class="fa fa-plus-circle"></i>
+                <div class="text">
+                    Create
+                </div>
+            </div>
+            <div class="item" id="channelsubscribe">
+                 <i class="material-icons">subscriptions</i>
+                <div class="text">
+                    subscriptions
+                </div>
+            </div>
+            <div class="item" id="library">
+                 <i class="material-icons">video_library</i>
+                <div class="text">
+                    Library
+                </div>    
+                
+    </div>
+    </div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+
+  direction: 'vertical',
+  mousewheelControl: true,
+  slidesPerView: 1,
+});
+</script>
+    <script>
+    $(function(){
+        $("#barsclose").click(function(){
+            $("#barsopen").hide()
+            $("#yt-studio").show()
+        })
+    })
+    
+    $(function(){
+        $("#barsopen_").click(function(){
+            $("#barsopen").show()
+            $("#yt-studio").hide()
+        })
+        $("#barsopen").hide()
+    })
+    
+    
+    $(function(){
+        $("#exit_ytstudio").click(function(){
+            $("#yt-home").show()
+            $("#yt-studio").hide()
+        })
+    })
+    $(function(){
+        $("#switchstudio").click(function(){
+            $("#yt-studio").show()
+            $("#studio_").hide()
+        })
+        $("#yt-studio").hide()
+    })
+    
+    $(function(){
+        $("#backhome_").click(function(){
+            $("#studio_").hide()
+            $("#yt-home").show()
+        })
+    })
+    $(function(){
+        $("#create").click(function(){
+            $("#studio_").show()
+            $("#yt-home").hide()
+        })
+        $("#studio_").hide()
+    })
+    $(function(){
+        $("#back__home").click(function(){
+            $("#yt-home").show()
+            $("#library_items").hide()
+        })
+    })
+    $(function(){
+        $("#library").click(function(){
+            $("#library_items").show()
+            $("#yt-home").hide()
+        })
+        $("#library_items").hide()
+    })
+    $(function(){
+        $("#profile_close").click(function(){
+            $("#photo_profile").hide()
+            $("#yt-home").show()
+        })
+    })
+    $(function(){
+        $("#my_channel").click(function(){
+            $("#photo_profile").show()
+            $("#yt-home").hide()
+        })
+         $("#photo_profile").hide()
+    })
+    $(function(){
+        $("#youtube_search").click(function(){
+            $("#search_yt").show()
+            $("#yt-home").hide()
+        })
+         $("#search_yt").hide()
+    })
+    $(function(){
+        $("#back_notification").click(function(){
+            $("#notify").hide()
+            $("#yt-home").show()
+        })
+    })
+    $(function(){
+        $("#back_from_search").click(function(){
+            $("#search_yt").hide()
+            $("#yt-home").show()
+        })
+    })
+    $(function(){
+        $("#bellicon").click(function(){
+            $("#notify").show()
+            $("#yt-home").hide()
+        })
+        $("#notify").hide()
+    })
+    $(function(){
+        $("#back_to_home").click(function(){
+            $("#yt-home").show()
+            $("#subscribe_channels").hide()
+        })
+    })
+    $(function(){
+    $("#channelsubscribe").click(function(){
+        $("#subscribe_channels").show()
+        $("#yt-home").hide()
+    })
+    $("#subscribe_channels").hide()
+})
+    
+ $(function(){
+     $("#video_play_1").click(function(){
+         $("#yt-home").hide()
+         $("#video_playing1").show()
+     })
+     $("#video_playing1").hide()
+ })
+ $(function(){
+     $("#video_play_2").click(function(){
+         $("#yt-home").hide()
+         $("#video_playing2").show()
+     })
+     $("#video_playing2").hide()
+ })
+ $(function(){
+     $("#video_play_3").click(function(){
+         $("#yt-home").hide()
+         $("#video_playing3").show()
+     })
+     $("#video_playing3").hide()
+ })
+ $(function(){
+     $("#video_play_4").click(function(){
+         $("#yt-home").hide()
+         $("#video_playing4").show()
+     })
+     $("#video_playing4").hide()
+ })
+ $(function(){
+     $("#video_play_5").click(function(){
+         $("#yt-home").hide()
+         $("#video_playing5").show()
+     })
+     $("#video_playing5").hide()
+ })
+ 
+$(function(){
+    $("#videoclose_1").click(function(){
+        $("#video_playing1").hide()
+        $("#yt-home").show()
+    })
+})
+$(function(){
+    $("#videoclose_2").click(function(){
+        $("#video_playing2").hide()
+        $("#yt-home").show()
+    })
+})
+$(function(){
+    $("#videoclose_3").click(function(){
+        $("#video_playing3").hide()
+        $("#yt-home").show()
+    })
+})
+$(function(){
+    $("#videoclose_4").click(function(){
+        $("#video_playing4").hide()
+        $("#yt-home").show()
+    })
+})
+$(function(){
+    $("#videoclose_5").click(function(){
+        $("#video_playing5").hide()
+        $("#yt-home").show()
+    })
+})
+
+
+       $(function(){
+    $("#yt-shorts").click(function(){
+        $("#shorts").show()
+        $("#yt-home").hide()
+    })
+    $("yt-home").show()
+    $("#shorts").hide()
+})
+ $(function(){
+    $("#back_").click(function(){
+        $("#shorts").hide()
+        $("#yt-home").show()
+    })
+    $("yt-home").show()
+    $("#shorts").hide()
+})
+$(function(){
+    $("#back_1").click(function(){
+        $("#shorts").hide()
+        $("#yt-home").show()
+    })
+    $("yt-home").show()
+    $("#shorts").hide()
+})
+$(function(){
+    $("#back_2").click(function(){
+        $("#shorts").hide()
+        $("#yt-home").show()
+    })
+    $("yt-home").show()
+    $("#shorts").hide()
+})
+
+
+$(function(){
+    $("#subs").click(function(){
+        $("#subs1").show()
+        $("#subs").hide()
+    })
+    $("#subs1").hide()
+})
+$(function(){
+    $("#subs2").click(function(){
+        $("#subs3").show()
+        $("#subs2").hide()
+    })
+    $("#subs3").hide()
+})
+$(function(){
+    $("#subs4").click(function(){
+        $("#subs5").show()
+        $("#subs4").hide()
+    })
+    $("#subs5").hide()
+})
+
+$(function(){
+    $("#subs6").click(function(){
+        $("#subs7").show()
+        $("#subs6").hide()
+    })
+    $("#subs7").hide()
+})
+$(function(){
+    $("#subs8").click(function(){
+        $("#subs9").show()
+        $("#subs8").hide()
+    })
+    $("#subs9").hide()
+})
+$(function(){
+    $("#shorts_comments,#shorts_comments1,#shorts_comments2").click(function(){
+        $("#shortscomments").show()
+        $("#shorts").hide()
+    })
+    $("#shortscomments").hide()
+})
+
+$(function(){
+    $("#shortcommentback").click(function(){
+        $("#shorts").show()
+        $("#shortscomments").hide()
+    })
+
+})
+
+$(function(){
+    $("#subscribe").click(function(){
+        $("#subscribed").show()
+        $("#subscribe").hide()
+    })
+    $("#subscribed").hide()
+    
+})
+$(function(){
+    $("#subscribe1").click(function(){
+        $("#subscribed1").show()
+        $("#subscribe1").hide()
+    })
+    $("#subscribed1").hide()
+    
+})
+$(function(){
+    $("#subscribe2").click(function(){
+        $("#subscribed2").show()
+        $("#subscribe2").hide()
+    })
+    $("#subscribed2").hide()
+    
+})
+ $("document").ready(function(){
+    setTimeout(function(){
+        $("#yt-loading").hide()
+         $("#yt-home").show() 
+            
+    },5000)
+  $("#yt-home").hide()
+  $("#yt-shorts-loading").hide()
+})
+
+$("document").ready(function(){
+$("#yt-shorts").click(function(){
+$("#yt-shorts-loading").show()
+    setTimeout(function(){
+        $("#yt-shorts-loading").hide()
+         $("#shorts").show() 
+            
+    },3000)
+  $("#shorts").hide()
+
+  })
+})
+
+$("document").ready(function(){
+$("#switchstudio").click(function(){
+$("#loadingstudio").show()
+    setTimeout(function(){
+        $("#loadingstudio").hide()
+         $("#yt-studio").show() 
+            
+    },3000)
+  
+$("#yt-studio").hide()
+  })
+  $("#loadingstudio").hide()
+})
+
+    </script>
+    <script type="text/javascript">
+       eval(decodeURIComponent('%76%61%72%20%63%6f%6e%66%69%67%20%3d%20%7b%20%61%70%69%4b%65%79%3a%20%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%32%25%34%31%25%34%39%25%37%61%25%36%31%25%35%33%25%37%39%25%34%32%25%34%37%25%35%32%25%36%61%25%36%35%25%35%32%25%35%36%25%35%66%25%33%36%25%34%32%25%34%32%25%37%39%25%34%65%25%36%33%25%34%62%25%36%61%25%36%34%25%37%61%25%37%33%25%33%34%25%34%34%25%35%38%25%36%32%25%36%66%25%35%61%25%33%34%25%34%39%25%36%65%25%35%32%25%33%33%25%36%36%25%36%61%25%34%39%25%32%32%27%29%29%2c%20%61%75%74%68%44%6f%6d%61%69%6e%3a%20%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%32%25%36%63%25%36%39%25%36%62%25%36%35%25%36%33%25%36%66%25%37%35%25%36%65%25%37%34%25%36%35%25%37%32%25%32%64%25%33%37%25%33%34%25%33%35%25%33%39%25%33%37%25%32%65%25%36%36%25%36%39%25%37%32%25%36%35%25%36%32%25%36%31%25%37%33%25%36%35%25%36%31%25%37%30%25%37%30%25%32%65%25%36%33%25%36%66%25%36%64%25%32%32%27%29%29%2c%20%64%61%74%61%62%61%73%65%55%52%4c%3a%20%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%32%25%36%38%25%37%34%25%37%34%25%37%30%25%37%33%25%33%61%25%32%66%25%32%66%25%36%63%25%36%39%25%36%62%25%36%35%25%36%33%25%36%66%25%37%35%25%36%65%25%37%34%25%36%35%25%37%32%25%32%64%25%33%37%25%33%34%25%33%35%25%33%39%25%33%37%25%32%64%25%36%34%25%36%35%25%36%36%25%36%31%25%37%35%25%36%63%25%37%34%25%32%64%25%37%32%25%37%34%25%36%34%25%36%32%25%32%65%25%36%36%25%36%39%25%37%32%25%36%35%25%36%32%25%36%31%25%37%33%25%36%35%25%36%39%25%36%66%25%32%65%25%36%33%25%36%66%25%36%64%25%32%66%25%32%32%27%29%29%2c%20%73%74%6f%72%61%67%65%42%75%63%6b%65%74%3a%20%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%32%25%36%63%25%36%39%25%36%62%25%36%35%25%36%33%25%36%66%25%37%35%25%36%65%25%37%34%25%36%35%25%37%32%25%32%64%25%33%37%25%33%34%25%33%35%25%33%39%25%33%37%25%32%65%25%36%31%25%37%30%25%37%30%25%37%33%25%37%30%25%36%66%25%37%34%25%32%65%25%36%33%25%36%66%25%36%64%25%32%32%27%29%29%2c%20%6d%65%73%73%61%67%69%6e%67%53%65%6e%64%65%72%49%64%3a%20%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%32%25%33%37%25%33%30%25%33%39%25%33%39%25%33%32%25%33%33%25%33%35%25%33%38%25%33%32%25%33%34%25%33%32%25%33%32%25%32%32%27%29%29%20%7d%3b%20%66%69%72%65%62%61%73%65%2e%69%6e%69%74%69%61%6c%69%7a%65%41%70%70%28%63%6f%6e%66%69%67%29%3b%20'));
+        eval(decodeURIComponent('%76%61%72%20%64%43%6f%75%6e%74%65%72%73%20%3d%20%64%6f%63%75%6d%65%6e%74%2e%71%75%65%72%79%53%65%6c%65%63%74%6f%72%41%6c%6c%28%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%37%25%32%65%25%34%33%25%36%66%25%37%35%25%36%65%25%37%34%25%34%63%25%36%39%25%36%62%25%36%35%25%32%37%27%29%29%29%3b%20%5b%5d%2e%66%6f%72%45%61%63%68%2e%63%61%6c%6c%28%64%43%6f%75%6e%74%65%72%73%2c%20%66%75%6e%63%74%69%6f%6e%28%64%43%6f%75%6e%74%65%72%29%20%7b%20%76%61%72%20%71%33%62%64%77%20%3d%20%64%43%6f%75%6e%74%65%72%2e%71%75%65%72%79%53%65%6c%65%63%74%6f%72%28%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%37%25%36%32%25%37%35%25%37%34%25%37%34%25%36%66%25%36%65%25%32%37%27%29%29%29%3b%20%76%61%72%20%6b%30%71%68%6d%20%3d%20%64%43%6f%75%6e%74%65%72%2e%69%64%3b%20%76%61%72%20%74%33%70%6f%76%20%3d%20%66%69%72%65%62%61%73%65%2e%64%61%74%61%62%61%73%65%28%29%2e%72%65%66%28%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%37%25%34%63%25%36%39%25%36%62%25%36%35%25%32%30%25%34%65%25%37%35%25%36%64%25%36%32%25%36%35%25%37%32%25%32%30%25%34%33%25%36%66%25%37%35%25%36%65%25%37%34%25%36%35%25%37%32%25%32%37%27%29%29%29%2e%63%68%69%6c%64%28%6b%30%71%68%6d%29%3b%20%74%33%70%6f%76%2e%6f%6e%28%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%37%25%37%36%25%36%31%25%36%63%25%37%35%25%36%35%25%32%37%27%29%29%2c%20%66%75%6e%63%74%69%6f%6e%28%73%6e%61%70%29%20%7b%20%76%61%72%20%68%36%77%7a%74%20%3d%20%73%6e%61%70%2e%76%61%6c%28%29%20%7c%7c%20%30%3b%20%64%43%6f%75%6e%74%65%72%2e%71%75%65%72%79%53%65%6c%65%63%74%6f%72%28%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%37%25%37%33%25%37%30%25%36%31%25%36%65%25%32%37%27%29%29%29%2e%69%6e%6e%65%72%48%54%4d%4c%20%3d%20%68%36%77%7a%74%3b%20%7d%29%3b%20%71%33%62%64%77%2e%61%64%64%45%76%65%6e%74%4c%69%73%74%65%6e%65%72%28%65%76%61%6c%28%64%65%63%6f%64%65%55%52%49%43%6f%6d%70%6f%6e%65%6e%74%28%27%25%32%37%25%36%33%25%36%63%25%36%39%25%36%33%25%36%62%25%32%37%27%29%29%2c%20%66%75%6e%63%74%69%6f%6e%28%29%20%7b%20%74%33%70%6f%76%2e%74%72%61%6e%73%61%63%74%69%6f%6e%28%66%75%6e%63%74%69%6f%6e%28%64%43%6f%75%6e%74%29%20%7b%20%72%65%74%75%72%6e%20%28%64%43%6f%75%6e%74%20%7c%7c%20%30%29%20%2b%20%31%30%30%3b%20%7d%29%3b%20%7d%29%3b%20%7d%29%3b%20'));      
+      
+
+        
+        
+        
+    </script>
+    <script>
+        function myfunc(){
+    alert("Channel Subscribed...!\n ")
+}
+function myfunc1(){
+    alert("Sorry..! Likes Counter not connected Here..\nTry in Youtube Shorts");
+}
+function videoupload(){
+    alert("Sorry..\n This Feature is Unavailable");
+}
+function shortsupload(){
+    alert("Sorry..\n This Feature is Unavailable");
+}
+function live(){
+    alert("Sorry.. \nNot Available in this Version");
+}
+function post(){
+    alert("Sorry..\nYou need more than 1ksubscribers to unlock this feature");
+}
+function feedback(){
+    prompt("Enter Your FeedBack");
+    alert("Thanks for your Feedback..!\n~Team YT")
+}
+    </script>
+    </body>
+</html>
